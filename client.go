@@ -140,7 +140,7 @@ func (c *Client) Listen(ctx context.Context, handler Handler) error {
 		return err
 	}
 
-	conn, resp, err := websocket.Dial(ctx, c.getWssURI(), websocket.DialOptions{
+	conn, resp, err := websocket.Dial(ctx, c.getWssURI(), &websocket.DialOptions{
 		HTTPHeader: http.Header{
 			"Authorization": []string{"Bearer " + token},
 		},
@@ -190,7 +190,7 @@ func (c *Client) Listen(ctx context.Context, handler Handler) error {
 			case invocationMessageType:
 				return dispatch(ctx, handler, &msg)
 			case streamInvocationMessageType, streamItemMessageType, cancelInvocationMessageType, completionMessageType:
-				return errors.New("unhandled InvocationMessage type: " + string(msg.Type))
+				return errors.New("unhandled InvocationMessage type: " + string(rune(msg.Type)))
 			case closeMessageType:
 				return conn.Close(websocket.StatusNormalClosure, "received close message from SignalR service")
 			}
