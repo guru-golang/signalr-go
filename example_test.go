@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/devigned/signalr-go"
+	"github.com/guru-golang/signalr-go"
 )
 
 func ExampleNewClient() {
