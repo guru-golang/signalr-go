@@ -548,7 +548,7 @@ func (c *Client) negotiate(ctx context.Context) (*negotiateResponse, error) {
 	defer closeRes(res)
 
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 
 	bodyBits, err := ioutil.ReadAll(res.Body)

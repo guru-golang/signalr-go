@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/devigned/signalr-go"
+	"github.com/guru-golang/signalr-go"
 )
 
 type (
